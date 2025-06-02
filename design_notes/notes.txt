@@ -1,0 +1,14 @@
+///STEP ONE///
+Requirement: Detect all valid IPs in a range
+
+Make a file that ingests a file then starts scanning a list of subnets
+
+Subnet_sweep.py:
+	Load a file (csv) of IPs and prefix lengths
+	Get a value like 192.168.1.1, 24 which means we need to scan .1->.255
+	So CIDR pow(2, 32) 2**(32-32) == 2**0 == 1 
+			   2**(32-24) == 2**8 == 256
+	Breakup CIDR based on subnet mask [32-24] (.X) | [23-16] (.X.X) | [15-8] (.X.X.X) | [7-0] (X.X.X.X)
+	Will initially focus on the >=24 PL case.
+	So we get 192.168.1.0/24 which means we do 192.168.1.0 + [i] where i iterates to 255
+	
