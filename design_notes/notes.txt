@@ -12,3 +12,12 @@ Subnet_sweep.py:
 	Will initially focus on the >=24 PL case.
 	So we get 192.168.1.0/24 which means we do 192.168.1.0 + [i] where i iterates to 255
 	
+	Subnet sweep should/does return a list of endpoints in a list:
+		How should we format this output? This return would be a list where I have the first subnet detected endpoints
+		That'd be the first index, the next index would be the next list and so forth. but why
+		Why would you return a list of list becuase the endproduct of your endpoints is that you
+			take the endpoints that you've discovered in the network then populate the graph
+			and chart relations between endpoints so really we just need *initially* a list of 
+			all endpoints then need.
+		
+		SO subnet sweeper outputs a list of discovered endpoints, now we need to intercept that traffic and create relations	
