@@ -15,8 +15,9 @@ def subnet_sweep(range_file = "subnet_range.csv"):
             if j > 1 and j < 255:
                 temp_sub = current_subnet[:-1]
                 IP = temp_sub + str(j)
-                response = ping(IP,timeout=.2)
-                if response is not None:
+                response = ping(IP,timeout=.25)
+                # print(f"Response: {response}\n")
+                if response is not None and response is not False:
                     print(f"Endpoint detected at: {IP}\n")
                     endpoints.append(IP)
     return endpoints
