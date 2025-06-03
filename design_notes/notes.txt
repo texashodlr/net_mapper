@@ -3,7 +3,7 @@ Requirement: Detect all valid IPs in a range
 
 Make a file that ingests a file then starts scanning a list of subnets
 
-Subnet_sweep.py:
+Subnet_sweeperi.py:
 	Load a file (csv) of IPs and prefix lengths
 	Get a value like 192.168.1.1, 24 which means we need to scan .1->.255
 	So CIDR pow(2, 32) 2**(32-32) == 2**0 == 1 
@@ -21,3 +21,12 @@ Subnet_sweep.py:
 			all endpoints then need.
 		
 		SO subnet sweeper outputs a list of discovered endpoints, now we need to intercept that traffic and create relations	
+
+Network_graph.py
+	Using NetworkX we can create a graph similar to this article: https://plotly.com/python/network-graphs/
+	Where decide nodes as endpoints with an origin node being the gateway.
+	Initial testing we designate the local router: 192.168.1.1 as the origin node
+	That means all endpoints in this initial instance must relate to the origin.
+	So network_graph calls subnet_sweeper which returns a list of IPs
+	Each IP == Endpoint == Node in the graph much then have an 'edge' to the gateway .1
+	
