@@ -47,7 +47,7 @@ fig.add_trace(go.Scatter(
     y=node_y, 
     mode='markers+text', 
     marker=dict(size=10,
-        color='light-blue',
+        color='blue',
         line=dict(width=2, color='black')
     ),
     text=node_labels,
@@ -56,7 +56,7 @@ fig.add_trace(go.Scatter(
         size=12,
         color='black'
     ),
-    hoverinfo='text'
+    hoverinfo='text',
     hovertext=node_labels
 ))
 
