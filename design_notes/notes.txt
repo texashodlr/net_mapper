@@ -29,4 +29,6 @@ Network_graph.py
 	That means all endpoints in this initial instance must relate to the origin.
 	So network_graph calls subnet_sweeper which returns a list of IPs
 	Each IP == Endpoint == Node in the graph much then have an 'edge' to the gateway .1
-	
+
+Now that the network graph functions with a single IP need to expand to support multiple ranges and gateways
+	Edit to support ingesting csv with gateways and detected IPs and plot them as well	
