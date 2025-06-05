@@ -1,8 +1,8 @@
 # Network Mapper
-This repo holds a python project that maps out endpoints in a network plotting them /somehow/
+This repo is a python project that helps a user graphically map out endpoints in a network and produces the resulting map in a browser.
 
 ## Network Topology Visualizer Tool
-The point of this tool is to scan a subnet(s) then populate a 2D graph with the endpoints that were discovered.
+The point of this tool is to scan a collection of subnet(s) then populate a 2D graph with the endpoints that were discovered.
 
 Once the endpoints are discovered they are then connected with lines for relations (sending traffic)
 

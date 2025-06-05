@@ -31,4 +31,10 @@ Network_graph.py
 	Each IP == Endpoint == Node in the graph much then have an 'edge' to the gateway .1
 
 Now that the network graph functions with a single IP need to expand to support multiple ranges and gateways
-	Edit to support ingesting csv with gateways and detected IPs and plot them as well	
+	Edit to support ingesting csv with gateways and detected IPs and plot them as well
+	Most subnets we're scanning are going to have a gateway and that gateway is going to be at the beginning of the range
+
+How can we get a list of all possible networks that are actively in use?	
+	1. Rely on the users to provide a nice (easy) list of subnets and prefix
+	2. Somehow query /something/ to determine additional network ranges that might exist.
+
