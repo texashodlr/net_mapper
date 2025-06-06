@@ -1,6 +1,6 @@
 import networkx as nx
 import plotly.graph_objects as go
-from subnet_sweeper import subnet_sweep
+from subnet_sweeper import subnet_sweep, subnet_discovery
 
 def graph_create(node_list, gateway_list):
     # Creates a graph using NetworkX
@@ -86,3 +86,6 @@ gateway_2 = '10.10.10.1'
 node_list = [node_list_1, node_list_2]
 gateway_list = [gateway_1, gateway_2]
 graph_create(node_list, gateway_list)
+
+self_ip = input("What's your IP address?")
+node_list = subnet_discovery(self_ip)

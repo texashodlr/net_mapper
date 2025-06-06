@@ -38,3 +38,9 @@ How can we get a list of all possible networks that are actively in use?
 	1. Rely on the users to provide a nice (easy) list of subnets and prefix
 	2. Somehow query /something/ to determine additional network ranges that might exist.
 
+But how might we query?
+	Assuming we install the application locally:
+	1. Determine whoami -> then build the subnet region from there
+		1.A. Ask the user for IP, proceed to scan the entire subnet region--assuming user doesn't know GW.
+		1.B. User gives X.X.X.NUM -> begin range at X.X.X.1 and run subnetsweep
+	2. Need packet capture scapy
