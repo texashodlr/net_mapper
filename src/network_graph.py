@@ -6,8 +6,9 @@ def graph_create(node_list, gateway_list):
     # Creates a graph using NetworkX
     G = nx.Graph()
     # G.add_edge("a","b",weight=0.25)
-    for node_array,gateway in node_list, gateway_list:
+    for node_array,gateway in zip(node_list, gateway_list):
         for node in node_array:
+            print(f"Node: {node}, Gateway: {gateway}")
             G.add_edge(node, gateway, weight = 0.25)
 
     # Generates positions for the nodes
@@ -74,7 +75,8 @@ def graph_create(node_list, gateway_list):
 
 
 # Real
-node_list_1 = subnet_sweep('subnet_range.csv')
+# node_list_1 = subnet_sweep('subnet_range.csv')
+node_list_1 = ['192.168.1.2', '192.168.1.20', '192.168.1.85', '192.168.1.99', '192.168.1.187', '192.168.1.201', '192.168.1.240']
 gateway_1 = '192.168.1.1'
 
 # Dummy
