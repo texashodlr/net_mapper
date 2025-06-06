@@ -1,6 +1,6 @@
 import networkx as nx
 import plotly.graph_objects as go
-from subnet_sweeper import subnet_sweep, subnet_discovery
+from subnet_sweeper import subnet_sweep, subnet_discovery, subnet_generate
 
 def graph_create(node_list, gateway_list):
     # Creates a graph using NetworkX
@@ -73,19 +73,28 @@ def graph_create(node_list, gateway_list):
     # Show the figure
     fig.show()
 
+self_ip = str(input("What's your IP address? "))
+
+# Randomized if you want to 'spawn' additional fake subnets
+randomized_list_count = int(input("How many 'fake' subnets should we add? "))
+
+randomized_subnets_gws = subnet_generate(randomized_list_count)
+randomized_subn = randomized_subnets_gws[0]
+print(f"Randomized Subnets: {randomized_subn}\n")
+randomized_gws = randomized_subnets_gws[1] 
+print(f"Randomized Gateways: {randomized_gws}\n")
+node_list_1 = subnet_discovery(self_ip)
 
 # Real
 # node_list_1 = subnet_sweep('subnet_range.csv')
-node_list_1 = ['192.168.1.2', '192.168.1.20', '192.168.1.85', '192.168.1.99', '192.168.1.187', '192.168.1.201', '192.168.1.240']
+# node_list_1 = ['192.168.1.2', '192.168.1.20', '192.168.1.85', '192.168.1.99', '192.168.1.187', '192.168.1.201', '192.168.1.240']
 gateway_1 = '192.168.1.1'
 
 # Dummy
 node_list_2 = ['10.10.10.2','10.10.10.9', '10.10.10.21','10.10.10.27' , '10.10.10.32', '10.10.10.50']
 gateway_2 = '10.10.10.1'
 
-node_list = [node_list_1, node_list_2]
-gateway_list = [gateway_1, gateway_2]
+node_list = [node_list_1, node_list_2] + randomized_subn
+gateway_list = [gateway_1, gateway_2] + randomized_gws
 graph_create(node_list, gateway_list)
 
-self_ip = input("What's your IP address?")
-node_list = subnet_discovery(self_ip)
