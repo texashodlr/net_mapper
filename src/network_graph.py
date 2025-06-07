@@ -2,7 +2,17 @@ import networkx as nx
 import plotly.graph_objects as go
 from subnet_sweeper import subnet_sweep, subnet_discovery, subnet_generate
 
+"""
+This file calls the subnet_sweeper to obtain a list of IPs that have valid hosts
+behind them. Then it takes those valid IPs and plots them in a graph to see network structure.
+"""
+
 def graph_create(node_list, gateway_list):
+    """
+    This function takes a list of nodes (endpoints) and gateways and turns them
+    into a plot where nodes are associated with their respective gateways.
+    The graph generates (fig.show()) as a weburl at local host on Port:50206.
+    """
     # Creates a graph using NetworkX
     G = nx.Graph()
     # G.add_edge("a","b",weight=0.25)
@@ -73,28 +83,46 @@ def graph_create(node_list, gateway_list):
     # Show the figure
     fig.show()
 
-self_ip = str(input("What's your IP address? "))
+### General User input below ###
+"""
+1. User is asked for the number of subnets they'd like generated and those entities are spawned
+2. User is  asked for their IP address to call the subnet_sweeper subnet_discovery function
+"""
 
-# Randomized if you want to 'spawn' additional fake subnets
+## User is asked for their desired amount of randomized subnets
 randomized_list_count = int(input("How many 'fake' subnets should we add? "))
 
+## Combined list of RNG'd Subnets & GWs, list format is [RNG_Subnets, RNG_GWs]
 randomized_subnets_gws = subnet_generate(randomized_list_count)
+
+## Randomized Subnets
 randomized_subn = randomized_subnets_gws[0]
 print(f"Randomized Subnets: {randomized_subn}\n")
+
+## Randomized Gateways
 randomized_gws = randomized_subnets_gws[1] 
 print(f"Randomized Gateways: {randomized_gws}\n")
+
+## User is asked for their IP for subnet_discovery
+self_ip = str(input("What's your IP address? "))
 node_list_1 = subnet_discovery(self_ip)
 
-# Real
+# Test Data 1
 # node_list_1 = subnet_sweep('subnet_range.csv')
 # node_list_1 = ['192.168.1.2', '192.168.1.20', '192.168.1.85', '192.168.1.99', '192.168.1.187', '192.168.1.201', '192.168.1.240']
 gateway_1 = '192.168.1.1'
 
-# Dummy
+# Test Data 2
 node_list_2 = ['10.10.10.2','10.10.10.9', '10.10.10.21','10.10.10.27' , '10.10.10.32', '10.10.10.50']
 gateway_2 = '10.10.10.1'
 
+## Node list is consolidated with real and RNG endpoints
+## GW list is consolidated with real and RNG GWs
 node_list = [node_list_1, node_list_2] + randomized_subn
 gateway_list = [gateway_1, gateway_2] + randomized_gws
+
+"""
+graph_create is program being called.
+"""
 graph_create(node_list, gateway_list)
 
