@@ -44,3 +44,4 @@ But how might we query?
 		1.A. Ask the user for IP, proceed to scan the entire subnet region--assuming user doesn't know GW.
 		1.B. User gives X.X.X.NUM -> begin range at X.X.X.1 and run subnetsweep
 	2. Need packet capture scapy
+
