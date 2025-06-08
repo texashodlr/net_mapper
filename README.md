@@ -22,3 +22,7 @@ Once the endpoints are discovered they are then connected with lines for relatio
 	before eventually plotting them in the browser. The user will see their detected endpoints connected
 	to their local gateway. 
 4. Running the program is simply: `cd src && python network_graph.py`
+
+## Example Network Topology
+
+![Alt Text](/design_notes/Network_Example.jpg)
