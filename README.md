@@ -25,4 +25,4 @@ Once the endpoints are discovered they are then connected with lines for relatio
 
 ## Example Network Topology
 
-![Alt Text](/design_notes/Network_Example.jpg)
+![5 RNG Subnet Example](/design_notes/Network_Example.jpg)
