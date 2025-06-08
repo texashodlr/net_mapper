@@ -75,8 +75,8 @@ def subnet_generate(count=0):
     and then spawns clusters on a single subnet.
     It is set to 20 hosts for spawning.
     """
-    random_subnets = [None] * 10
-    random_gateways = [None] * 10
+    random_subnets = [None] * count
+    random_gateways = [None] * count
     for i in range(count):
         # Generate a randomized subnet
         octets = [str(random.randint(0, 254)) for _ in range(3)]
@@ -84,8 +84,8 @@ def subnet_generate(count=0):
         # Generate gateway
         gateway = subnet+'1'
         # Generate 10 hosts
-        subnet_range = [None]*20
-        for j in range(20):
+        subnet_range = [None]*(count * 2)
+        for j in range(count * 2):
             last_octet = str(random.randint(0, 254))
             subnet_range[j] = subnet + last_octet
         random_subnets[i] = subnet_range
